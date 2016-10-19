@@ -1,0 +1,1 @@
+../../../../../QRScanner/Classes/libqrencode/QRCodeGenerator.h
