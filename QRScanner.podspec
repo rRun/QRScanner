@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'QRScanner'
-  s.version          = '0.1.1'
+  s.version          = '1.0.2'
   s.summary          = '条形码/二维码扫描，自带扫描页面'
 
 # This description is used to generate tags and improve search results.
@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
                     条形码/二维码扫描，自带扫描页面,支持组件化开发
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/QRScanner'
+  s.homepage         = 'https://github.com/rRun/QRScanner'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'hexy' => 'hexy@cdfortis.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/QRScanner.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/rRun/QRScanner.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '7.0'

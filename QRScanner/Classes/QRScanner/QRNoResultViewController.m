@@ -7,7 +7,7 @@
 //
 
 #import "QRNoResultViewController.h"
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 @interface QRNoResultViewController ()
 
 @property (nonatomic,strong)UITextView *textView;
