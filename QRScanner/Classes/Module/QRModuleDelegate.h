@@ -16,6 +16,6 @@
 -(NSString *)returnModuleFormat;
 
 //返回symbol的回调
--(void)didFinishScanCode:(id)symbol;
+-(void)didFinishScanCode:(id)symbol fromSuperViewOrController:(id) obj;
 
 @end

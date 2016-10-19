@@ -23,12 +23,6 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		EAD8E7371D9D090A00284BDA /* scanBox.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD8E7311D9D090A00284BDA /* scanBox.png */; };
-		EAD8E7381D9D090A00284BDA /* scanBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD8E7321D9D090A00284BDA /* scanBox@2x.png */; };
-		EAD8E7391D9D090A00284BDA /* scanBox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD8E7331D9D090A00284BDA /* scanBox@3x.png */; };
-		EAD8E73A1D9D090A00284BDA /* scanLine.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD8E7341D9D090A00284BDA /* scanLine.png */; };
-		EAD8E73B1D9D090A00284BDA /* scanLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD8E7351D9D090A00284BDA /* scanLine@2x.png */; };
-		EAD8E73C1D9D090A00284BDA /* scanLine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD8E7361D9D090A00284BDA /* scanLine@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,12 +65,6 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A9A930DBC1CA5AA33D5D261B /* QRScanner.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = QRScanner.podspec; path = ../QRScanner.podspec; sourceTree = "<group>"; };
 		B5B1FCA640309C5CDB077D89 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		EAD8E7311D9D090A00284BDA /* scanBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scanBox.png; sourceTree = "<group>"; };
-		EAD8E7321D9D090A00284BDA /* scanBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanBox@2x.png"; sourceTree = "<group>"; };
-		EAD8E7331D9D090A00284BDA /* scanBox@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanBox@3x.png"; sourceTree = "<group>"; };
-		EAD8E7341D9D090A00284BDA /* scanLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scanLine.png; sourceTree = "<group>"; };
-		EAD8E7351D9D090A00284BDA /* scanLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanLine@2x.png"; sourceTree = "<group>"; };
-		EAD8E7361D9D090A00284BDA /* scanLine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanLine@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,12 +135,6 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* XYViewController.h */,
 				6003F5A6195388D20070C39A /* XYViewController.m */,
-				EAD8E7311D9D090A00284BDA /* scanBox.png */,
-				EAD8E7321D9D090A00284BDA /* scanBox@2x.png */,
-				EAD8E7331D9D090A00284BDA /* scanBox@3x.png */,
-				EAD8E7341D9D090A00284BDA /* scanLine.png */,
-				EAD8E7351D9D090A00284BDA /* scanLine@2x.png */,
-				EAD8E7361D9D090A00284BDA /* scanLine@3x.png */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -297,15 +279,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD8E7371D9D090A00284BDA /* scanBox.png in Resources */,
-				EAD8E73B1D9D090A00284BDA /* scanLine@2x.png in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
-				EAD8E7391D9D090A00284BDA /* scanBox@3x.png in Resources */,
-				EAD8E73A1D9D090A00284BDA /* scanLine.png in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
-				EAD8E7381D9D090A00284BDA /* scanBox@2x.png in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
-				EAD8E73C1D9D090A00284BDA /* scanLine@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
