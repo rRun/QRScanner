@@ -1,1 +1,0 @@
-../../../../../QRScanner/Classes/libqrencode/mask.h

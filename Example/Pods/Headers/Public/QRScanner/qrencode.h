@@ -1,1 +1,0 @@
-../../../../../QRScanner/Classes/libqrencode/qrencode.h

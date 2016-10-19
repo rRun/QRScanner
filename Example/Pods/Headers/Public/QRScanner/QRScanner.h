@@ -1,1 +1,0 @@
-../../../../../QRScanner/Classes/QRScanner/QRScanner.h
