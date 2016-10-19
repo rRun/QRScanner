@@ -7,10 +7,9 @@
 //
 
 #import "XYViewController.h"
-#import <QRScanner/ScanView.h>
-#import <QRScanner/QRScannerViewController.h>
+#import <QRScanner/ScanQCodeViewController.h>
 @interface XYViewController ()
-@property (weak, nonatomic) IBOutlet ScanView *scanView;
+
 
 @end
 
@@ -21,7 +20,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    [self.scanView start];
+
     
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(100, 30, 50, 30)];
     [button setTitle:@"enter" forState:UIControlStateNormal];
@@ -32,14 +31,12 @@
 }
 
 -(void)doEnter{
-    QRScannerViewController *vc =[[QRScannerViewController alloc]init];
+    ScanQCodeViewController *vc =[[ScanQCodeViewController alloc]init];
     vc.title = @"你好";
     [vc setCallBack:^(id str) {
         NSLog(@"ok:%@",str);
     }];
-    [vc setAuthrosizeCallBack:^(AVAuthorizationStatus staus) {
-        NSLog(@"权限:%ld",(long)staus);
-    }];
+
     
     [self presentViewController:vc animated:YES completion:nil];
     

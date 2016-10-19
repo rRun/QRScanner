@@ -17,22 +17,8 @@
                     <view key="view" contentMode="scaleToFill" id="TpU-gO-2f1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3n-Ld-4vh" customClass="ScanView">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Mvr-aV-6Um" firstAttribute="top" secondItem="y3n-Ld-4vh" secondAttribute="bottom" id="7QE-1A-dP5"/>
-                            <constraint firstAttribute="trailing" secondItem="y3n-Ld-4vh" secondAttribute="trailing" id="WVL-Ie-kRz"/>
-                            <constraint firstItem="y3n-Ld-4vh" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" id="WeG-ne-Vyx"/>
-                            <constraint firstItem="y3n-Ld-4vh" firstAttribute="top" secondItem="TpU-gO-2f1" secondAttribute="top" id="drk-sP-hMu"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="scanView" destination="y3n-Ld-4vh" id="weU-9I-neT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
