@@ -11,6 +11,7 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <Reachability/Reachability.h>
 
 #define DeviceMaxHeight ([UIScreen mainScreen].bounds.size.height)
 #define DeviceMaxWidth ([UIScreen mainScreen].bounds.size.width)
@@ -51,6 +52,7 @@
     isPush = NO;
     
     [self InitScan];
+    [self noticeConnection];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,6 +60,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 #pragma mark - 返回
 - (void)backButtonEvent
 {
@@ -92,6 +97,24 @@
     
 }
 
+#pragma mark - 监测网络
+-(void)noticeConnection{
+    
+    Reachability *reach =[Reachability reachabilityForInternetConnection];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateNetwork) name:kReachabilityChangedNotification object:nil];
+    
+    [self updateNetwork];
+    
+}
+-(void)updateNetwork{
+    if ([Reachability reachabilityForInternetConnection].isReachable) {
+        [self reStartScan];
+    }else{
+        readview.TIPS = @"网络连接失败，扫一扫不可用！";
+        [self stopScan];
+    }
+}
 #pragma mark - 相册
 - (void)alumbBtnEvent
 {
@@ -217,6 +240,10 @@
 
 - (void)reStartScan
 {
+    if (readview.is_Anmotion) {
+        return;
+    }
+    
     readview.is_Anmotion = NO;
     
     if (readview.is_AnmotionFinished) {
@@ -227,6 +254,9 @@
 }
 
 -(void)stopScan{
+    if (!readview.is_Anmotion) {
+        return;
+    }
     readview.is_Anmotion = YES;
 
     [readview stop];

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'QRScanner'
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = '条形码/二维码扫描，自带扫描页面'
 
 # This description is used to generate tags and improve search results.
