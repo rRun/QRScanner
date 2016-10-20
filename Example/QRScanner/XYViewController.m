@@ -30,6 +30,9 @@
     [self.view addSubview:button];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [self doEnter];
+}
 -(void)doEnter{
     ScanQCodeViewController *vc =[[ScanQCodeViewController alloc]init];
     vc.title = @"你好";
