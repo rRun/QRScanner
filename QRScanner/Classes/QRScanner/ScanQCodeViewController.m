@@ -205,7 +205,7 @@
     
     //播放扫描二维码的声音
     SystemSoundID soundID;
-    NSString *strSoundFile = [[NSBundle mainBundle] pathForResource:@"noticeMusic" ofType:@"wav"];
+    NSString *strSoundFile = [[NSBundle bundleForClass:[self class]] pathForResource:@"noticeMusic" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:strSoundFile],&soundID);
     AudioServicesPlaySystemSound(soundID);
     
