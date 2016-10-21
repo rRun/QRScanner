@@ -112,7 +112,7 @@
         [self reStartScan];
     }else{
         readview.TIPS = @"网络连接失败，扫一扫不可用！";
-        [self stopScan];
+        [self performSelector:@selector(stopScan) withObject:nil afterDelay:1];
     }
 }
 #pragma mark - 相册
@@ -235,14 +235,13 @@
     {
         self.callBack(str);
     }
-
+    
+    isPush = YES;
 }
 
 - (void)reStartScan
 {
-    if (readview.is_Anmotion) {
-        return;
-    }
+
     
     readview.is_Anmotion = NO;
     
@@ -250,13 +249,11 @@
         [readview loopDrawLine];
     }
     
-    [readview start];
+    [readview start]; 
 }
 
 -(void)stopScan{
-    if (!readview.is_Anmotion) {
-        return;
-    }
+  
     readview.is_Anmotion = YES;
 
     [readview stop];
@@ -268,7 +265,7 @@
     
     if (isFirst || isPush) {
         if (readview) {
-            [self reStartScan];
+            [self performSelector:@selector(reStartScan) withObject:nil afterDelay:0.5];
         }
     }
     
