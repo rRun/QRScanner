@@ -109,6 +109,7 @@
 }
 -(void)updateNetwork{
     if ([Reachability reachabilityForInternetConnection].isReachable) {
+        readview.TIPS = @"";
         [self reStartScan];
     }else{
         readview.TIPS = @"网络连接失败，扫一扫不可用！";
@@ -265,7 +266,7 @@
     
     if (isFirst || isPush) {
         if (readview) {
-            [self performSelector:@selector(reStartScan) withObject:nil afterDelay:0.5];
+            [self reStartScan];
         }
     }
     
