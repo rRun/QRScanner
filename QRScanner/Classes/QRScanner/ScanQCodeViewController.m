@@ -61,6 +61,7 @@
     
     [self InitScan];
     [self noticeConnection];
+    [self authorize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,6 +130,55 @@
         [self stopScan];
     }
 }
+#pragma mark - 相机权限
+-(void)authorize{
+    // 在iOS7 时，只有部分地区要求授权才能打开相机
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1) {
+        // Pre iOS 8 -- No camera auth required.
+        readview.TIPS = @" ";
+        [self startScan];
+    }else {
+        // iOS 8 后，全部都要授权
+        
+        
+        AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        switch (status) {
+            case AVAuthorizationStatusNotDetermined:{
+                // 许可对话没有出现，发起授权许可
+                
+                [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                    
+                    if (granted) {
+                        //第一次用户接受
+                        readview.TIPS = @" ";
+                        [self startScan];
+                    }else{
+                        //用户拒绝
+                        readview.TIPS = @"微问诊需要访问您的相机。\n请启用相机,设置/隐私/相机！";
+                        [self stopScan];
+                    }
+                }];
+                break;
+            }
+            case AVAuthorizationStatusAuthorized:{
+                // 已经开启授权，可继续
+                readview.TIPS = @" ";
+                [self startScan];
+                break;
+            }
+            case AVAuthorizationStatusDenied:
+            case AVAuthorizationStatusRestricted:
+                // 用户明确地拒绝授权，或者相机设备无法访问
+                readview.TIPS = @"微问诊需要访问您的相机。\n请启用相机,设置/隐私/相机！";
+                [self stopScan];
+                break;
+            default:
+                break;
+        }
+        
+    }
+}
+
 #pragma mark - 相册
 - (void)alumbBtnEvent
 {
@@ -263,12 +313,19 @@
 
 - (void)reStartScan
 {
+    [self authorize];
+    
+}
+
+-(void)startScan{
+    
     if (isBack) {
         return;
     }
     if (isOpen) {
         return;
     }
+    
     isOpen = YES;
     readview.is_Anmotion = NO;
     
@@ -280,7 +337,6 @@
     
     NSLog(@"打开扫描器");
 }
-
 -(void)stopScan{
     if (!isOpen) {
         return;

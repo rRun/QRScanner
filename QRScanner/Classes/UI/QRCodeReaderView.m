@@ -142,10 +142,11 @@
     //用于说明的label
     labIntroudction= [[UILabel alloc] init];
     labIntroudction.backgroundColor = [UIColor clearColor];
-    labIntroudction.frame=CGRectMake(0, (heih-64-50*widthRate)/2, DeviceMaxWidth, 50*widthRate);
+    labIntroudction.frame=CGRectMake(0, (heih-64-50*widthRate)/2, DeviceMaxWidth, 80*widthRate);
     labIntroudction.textAlignment = NSTextAlignmentCenter;
     labIntroudction.textColor=[UIColor whiteColor];
     labIntroudction.text=self.TIPS;
+    labIntroudction.numberOfLines = 0 ;
     [upView addSubview:labIntroudction];
     
     //左侧的view
