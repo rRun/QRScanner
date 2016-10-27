@@ -24,6 +24,8 @@
     
     BOOL isFirst;//第一次进入该页面
     BOOL isPush;//跳转到下一级页面
+    BOOL isBack;//已跳出
+    BOOL isOpen;//打开扫描仪
 }
 
 @property (strong, nonatomic) CIDetector *detector;
@@ -45,11 +47,17 @@
 //    UIBarButtonItem * rbbItem = [[UIBarButtonItem alloc]initWithTitle:@"相册" style:UIBarButtonItemStyleDone target:self action:@selector(alumbBtnEvent)];
 //    self.navigationItem.rightBarButtonItem = rbbItem;
 //    
-//    UIBarButtonItem * lbbItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(backButtonEvent)];
-//    self.navigationItem.leftBarButtonItem = lbbItem;
+    UIImage *btnImg = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"btn_return@2x" ofType:@"png"]];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [btn setImage:btnImg forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(backButtonEvent) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *itemBtn = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem = itemBtn;
     
     isFirst = YES;
     isPush = NO;
+    isBack = NO;
     
     [self InitScan];
     [self noticeConnection];
@@ -66,11 +74,16 @@
 #pragma mark - 返回
 - (void)backButtonEvent
 {
+    isBack = YES;
+    [self stopScan];
+    
     if (self.navigationController) {
         [self.navigationController popViewControllerAnimated:YES];
     }else{
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+    
+    
 }
 
 #pragma mark 初始化扫描
@@ -109,11 +122,11 @@
 }
 -(void)updateNetwork{
     if ([Reachability reachabilityForInternetConnection].isReachable) {
-        readview.TIPS = @"";
+        readview.TIPS = @" ";
         [self reStartScan];
     }else{
         readview.TIPS = @"网络连接失败，扫一扫不可用！";
-        [self performSelector:@selector(stopScan) withObject:nil afterDelay:1];
+        [self stopScan];
     }
 }
 #pragma mark - 相册
@@ -202,6 +215,14 @@
 #pragma mark -QRCodeReaderViewDelegate
 - (void)readerScanResult:(NSString *)result
 {
+    if ([self.navigationController.viewControllers indexOfObject:self] != self.navigationController.viewControllers.count - 1) {
+        return;
+    }
+    
+    if (isBack) {
+        return;
+    }
+    
     [self stopScan];
     
     //播放扫描二维码的声音
@@ -242,22 +263,33 @@
 
 - (void)reStartScan
 {
-
-    
+    if (isBack) {
+        return;
+    }
+    if (isOpen) {
+        return;
+    }
+    isOpen = YES;
     readview.is_Anmotion = NO;
     
     if (readview.is_AnmotionFinished) {
         [readview loopDrawLine];
     }
     
-    [readview start]; 
+    [readview start];
+    
+    NSLog(@"打开扫描器");
 }
 
 -(void)stopScan{
-  
+    if (!isOpen) {
+        return;
+    }
+    isOpen = NO;
     readview.is_Anmotion = YES;
 
     [readview stop];
+    NSLog(@"关闭扫描器");
 }
 #pragma mark - view
 - (void)viewWillAppear:(BOOL)animated
@@ -266,10 +298,9 @@
     
     if (isFirst || isPush) {
         if (readview) {
-            [self reStartScan];
+            [self performSelector:@selector(reStartScan) withObject:nil afterDelay:1];
         }
     }
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -286,6 +317,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+   
     
     if (isFirst) {
         isFirst = NO;
