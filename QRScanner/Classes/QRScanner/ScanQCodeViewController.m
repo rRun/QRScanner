@@ -154,7 +154,7 @@
                         [self startScan];
                     }else{
                         //用户拒绝
-                        readview.TIPS = @"微问诊需要访问您的相机。\n请启用相机,设置/隐私/相机！";
+                        readview.TIPS = @"扫一扫需要访问您的相机。\n请启用相机,设置/隐私/相机！";
                         [self stopScan];
                     }
                 }];
@@ -169,7 +169,7 @@
             case AVAuthorizationStatusDenied:
             case AVAuthorizationStatusRestricted:
                 // 用户明确地拒绝授权，或者相机设备无法访问
-                readview.TIPS = @"微问诊需要访问您的相机。\n请启用相机,设置/隐私/相机！";
+                readview.TIPS = @"扫一扫需要访问您的相机。\n请启用相机,设置/隐私/相机！";
                 [self stopScan];
                 break;
             default:
