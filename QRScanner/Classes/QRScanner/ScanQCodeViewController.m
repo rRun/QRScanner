@@ -322,10 +322,12 @@
     if (isBack) {
         return;
     }
+    
+    readview.userInteractionEnabled = YES;
+    
     if (isOpen) {
         return;
     }
-    
     isOpen = YES;
     readview.is_Anmotion = NO;
     
@@ -333,11 +335,15 @@
         [readview loopDrawLine];
     }
     
+    
     [readview start];
     
     NSLog(@"打开扫描器");
 }
 -(void)stopScan{
+    
+    readview.userInteractionEnabled=NO;
+    
     if (!isOpen) {
         return;
     }
