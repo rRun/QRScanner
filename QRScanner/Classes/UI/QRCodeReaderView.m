@@ -21,6 +21,8 @@
     NSTimer * countTime;
     
     UILabel * labIntroudction;//提示语句
+    
+    UIButton * turnBtn;//flash btn
 }
 @property (nonatomic, strong) CAShapeLayer *overlay;
 @end
@@ -168,7 +170,7 @@
     [reader addSubview:downView];
     
     //开关灯button
-    UIButton * turnBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    turnBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     turnBtn.backgroundColor = [UIColor clearColor];
     [turnBtn setBackgroundImage:[UIImage imageNamed:@"lightSelect"] forState:UIControlStateNormal];
     [turnBtn setBackgroundImage:[UIImage imageNamed:@"lightNormal"] forState:UIControlStateSelected];
@@ -210,6 +212,9 @@
             [device unlockForConfiguration];
         }
     }
+    
+    turnBtn.selected = on;
+    self.is_Flash = on;
 }
 
 -(CGRect)getScanCrop:(CGRect)rect readerViewBounds:(CGRect)readerViewBounds

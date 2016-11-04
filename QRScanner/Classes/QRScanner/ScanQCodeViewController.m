@@ -344,6 +344,10 @@
     isOpen = NO;
     readview.is_Anmotion = YES;
 
+    if (readview.is_Flash) {
+        [readview turnTorchOn:NO];
+    }
+    
     [readview stop];
     NSLog(@"关闭扫描器");
 }

@@ -23,7 +23,7 @@
 @property (nonatomic,copy)UIImageView * readLineView;
 @property (nonatomic,assign)BOOL is_Anmotion;
 @property (nonatomic,assign)BOOL is_AnmotionFinished;
-
+@property (nonatomic,assign)BOOL is_Flash;//闪光
 @property (nonatomic,strong)NSString * TIPS;
 
 //开启关闭扫描
@@ -31,5 +31,5 @@
 - (void)stop;
 
 - (void)loopDrawLine;//初始化扫描线
-
+- (void)turnTorchOn:(bool)on;//闪光打开和关闭
 @end
